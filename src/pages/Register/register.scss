@@ -1,0 +1,106 @@
+@import "../../scss/_var_.scss";
+
+.register {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // background: black;
+
+    .register-form {
+        // background: grey;
+        height: 70vh;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 20px;
+    
+        .header-section {
+            // background: yellow;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            flex: 0.5;
+            justify-content: flex-start;
+            align-items: flex-start;
+            color: $font-color1;
+    
+            .company-name {
+                margin-left: 20px;
+                font-weight: 800;
+            }
+        }
+    
+        .subheader-section {
+            // background: green;
+            width: 50%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+    
+            .header-text {
+                margin-left: 20px;
+                font-weight: 800;
+                color: $font-color2;
+            }
+    
+            .header-sub-text {
+                margin-left: 20px;
+                font-weight: 600;
+                font-size: 0.9em;
+                line-height: 1.5em;
+                color: $font-color3;
+            }
+        }
+    
+        .input-section {
+            // background: red;
+            width: 50%;
+            flex: 4;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            
+            .input-form {
+                // background: green;
+                width: 100%;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                height: 70%;
+    
+                .signin-button {
+                    width: 90%;
+                    height: 35px;
+                    background: #ae90e9;
+                    color: white;
+                    border: none;
+                    outline: none;
+                    border-radius: 5px;
+                    text-indent: 2px;
+                    font-weight: 500;
+                    margin: 20px auto;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .options-layout {
+        width: 50%;
+        // background: chartreuse;
+        height: 70vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}

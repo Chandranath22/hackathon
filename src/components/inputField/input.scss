@@ -1,0 +1,34 @@
+@import "../../scss/_var_.scss";
+
+.input-layout {
+    // background: white;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0;
+
+    .input-label {
+        font-weight: 600;
+        margin-left: 20px;
+        margin-bottom: 10px;
+        color: $font-color3;
+    }
+
+    .input-field {
+        width: 90%;
+        height: 35px;
+        border: 1px solid #757575;
+        outline: none;
+        border-radius: 5px;
+        text-indent: 5px;
+        font-weight: 600;
+        margin: 0 auto;
+        color: $font-color3;
+    }
+
+    ::placeholder {
+        opacity: 0.5;
+    }
+}
