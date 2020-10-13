@@ -1,29 +1,57 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './login.scss';
+import axios from 'axios';
 
 import Input from '../../components/inputField/input';
 import OptionsButton from '../../components/optionsButton/optionsButton';
 
 const Login = () => {
-    const[admin, setAdmin] = useState(false) //Checkif user is logging through admin route
+    // const[admin, setAdmin] = useState(false) //Checkif user is logging through admin route
     const[email, setEmail] = useState(''); //user email id
-    const[password, setPassword] = useState(''); //user password
+    const[password, setPassword] = useState(''); 
+    const[userType, setUserType] = useState('');//user password
     const location = useLocation();
 
     const onFormSubmit = () => {
-        if(location.pathname === "/admin_login") {
-            setAdmin(true)
-        }
+
         console.log('clicked');
-        console.log(email);
-        console.log(password);
-        console.log(admin);
+        if(location.pathname === "/admin_login") {
+            const data1 = {
+                email,
+                password,
+                userType
+            }
+            axios.post('http://localhost:9000/api/admin_login', data1).then(res => {
+                  if(res.data.message === 'successful') {
+                    console.log(res);
+                    window.location.href = '/home';
+                } else {
+                    console.log("You are not an admin")
+                }
+            })
+            .catch(err => {
+                console.log(err)
+            })
+
+        } else {
+            const data = {
+                email,
+                password
+            };
+            axios.post('http://localhost:9000/api/login', data).then(res => {
+                console.log(res);
+                window.location.href = '/home';
+            })
+            .catch(err => {
+                console.log(err);        
+            })
+        }
     };
     
     return (
         <div className="login">
-             <div className="login-form">
+            <div className="login-form">
                 <div className="header-section">
                     <h3 className="company-name">Question-Answers-Portal</h3>
                 </div>
