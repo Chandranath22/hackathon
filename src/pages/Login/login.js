@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './login.scss';
 import axios from 'axios';
-
 import Input from '../../components/inputField/input';
 import OptionsButton from '../../components/optionsButton/optionsButton';
 
 const Login = () => {
-    // const[admin, setAdmin] = useState(false) //Checkif user is logging through admin route
     const[email, setEmail] = useState(''); //user email id
     const[password, setPassword] = useState(''); 
-    const[userType, setUserType] = useState('');//user password
     const location = useLocation();
 
     const onFormSubmit = () => {
@@ -19,15 +16,16 @@ const Login = () => {
         if(location.pathname === "/admin_login") {
             const data1 = {
                 email,
-                password,
-                userType
+                password
             }
             axios.post('http://localhost:9000/api/admin_login', data1).then(res => {
-                  if(res.data.message === 'successful') {
-                    console.log(res);
-                    window.location.href = '/home';
+                if(res.data.message === 'successful') {
+                    window.location.href = '/adminHome';
+                    console.log("I am the admin");
+                } else if (res.data.message === 'IncorrectPassword') {
+                    console.log('Password is Incorrect');
                 } else {
-                    console.log("You are not an admin")
+                    console.log("You are not an admin");
                 }
             })
             .catch(err => {
@@ -40,8 +38,14 @@ const Login = () => {
                 password
             };
             axios.post('http://localhost:9000/api/login', data).then(res => {
-                console.log(res);
-                window.location.href = '/home';
+                if (res.data.message === 'successful') {
+                    localStorage.setItem('email', email);
+                    window.location.href = '/home';
+                } else if (res.data.message === 'IncorrectPassword') {
+                    console.log('Password Is Incorrect');
+                } else {
+                    console.log('No User found. Please register');
+                }
             })
             .catch(err => {
                 console.log(err);        

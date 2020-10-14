@@ -30,7 +30,7 @@ const Register = () => {
         }
         axios.post('http://localhost:9000/api/register', data).then(res => {
             console.log(res);
-            window.location.href = '/home';
+            window.location.href = '/candidate_login';
         })
         .catch(err => {
             console.log(err);
