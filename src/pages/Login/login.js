@@ -1,55 +1,42 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import './login.scss';
-import axios from 'axios';
 import Input from '../../components/inputField/input';
 import OptionsButton from '../../components/optionsButton/optionsButton';
 
-const Login = () => {
+import useAdminLogin from '../../hooks/useAdminLogin';
+import useCandidateLogin from '../../hooks/useCandidLogin';
+
+const Login = ({ getEmail }) => {
     const[email, setEmail] = useState(''); //user email id
-    const[password, setPassword] = useState(''); 
+    const[password, setPassword] = useState('');
     const location = useLocation();
+    const[adminLogin] = useAdminLogin();
+    const[candidateLogin] = useCandidateLogin();
+
+    // useEffect(() => {
+    //     setUrl(location.pathname);
+    //     console.log(message);
+    //     console.log(cmessage);
+    // }, [message, location.pathname, cmessage, popupMsg])
 
     const onFormSubmit = () => {
-
-        console.log('clicked');
         if(location.pathname === "/admin_login") {
-            const data1 = {
+            const data = {
                 email,
                 password
             }
-            axios.post('http://localhost:9000/api/admin_login', data1).then(res => {
-                if(res.data.message === 'successful') {
-                    window.location.href = '/adminHome';
-                    console.log("I am the admin");
-                } else if (res.data.message === 'IncorrectPassword') {
-                    console.log('Password is Incorrect');
-                } else {
-                    console.log("You are not an admin");
-                }
-            })
-            .catch(err => {
-                console.log(err)
-            })
-
+            adminLogin(data);
+                getEmail(data.email);
+                window.location.href = '/admin_home';
         } else {
             const data = {
                 email,
                 password
             };
-            axios.post('http://localhost:9000/api/login', data).then(res => {
-                if (res.data.message === 'successful') {
-                    localStorage.setItem('email', email);
-                    window.location.href = '/home';
-                } else if (res.data.message === 'IncorrectPassword') {
-                    console.log('Password Is Incorrect');
-                } else {
-                    console.log('No User found. Please register');
-                }
-            })
-            .catch(err => {
-                console.log(err);        
-            })
+            candidateLogin(data);
+                getEmail(email);
+                window.location.href = '/home';
         }
     };
     

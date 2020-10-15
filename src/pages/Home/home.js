@@ -4,8 +4,12 @@ import './home.scss';
 import OptionsButton from '../../components/optionsButton/optionsButton';
 
 const Home = () => {
+    const logout = () => {
+        window.location.href = '/candidate_login';
+    };
     return (
         <div className="home-page">
+            <h5 className="logout-button" onClick={() => logout()}>Logout</h5>
             <div className="header-section">
                 <h1 className="company-namer">Question</h1>
                 <h1 className="company-namer">Answers</h1>
