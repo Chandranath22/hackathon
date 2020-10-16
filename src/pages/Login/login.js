@@ -7,7 +7,7 @@ import OptionsButton from '../../components/optionsButton/optionsButton';
 import useAdminLogin from '../../hooks/useAdminLogin';
 import useCandidateLogin from '../../hooks/useCandidLogin';
 
-const Login = ({ getEmail }) => {
+const Login = () => {
     const[email, setEmail] = useState(''); //user email id
     const[password, setPassword] = useState('');
     const location = useLocation();
@@ -27,16 +27,15 @@ const Login = ({ getEmail }) => {
                 password
             }
             adminLogin(data);
-                getEmail(data.email);
-                window.location.href = '/admin_home';
+            window.location.href = '/admin_home';
         } else {
             const data = {
                 email,
                 password
             };
             candidateLogin(data);
-                getEmail(email);
-                window.location.href = '/home';
+            localStorage.setItem('email', email);
+            window.location.href = '/home';
         }
     };
     

@@ -58,6 +58,7 @@ const MySQL = () => {
 
     const submitTest = () => {
         const email = localStorage.getItem('email');
+        console.log(email);
         console.log(answersArray);
         if (email) {
             const data = {

@@ -11,8 +11,7 @@ const Home = () => {
         <div className="home-page">
             <h5 className="logout-button" onClick={() => logout()}>Logout</h5>
             <div className="header-section">
-                <h1 className="company-namer">Question</h1>
-                <h1 className="company-namer">Answers</h1>
+                <h1 className="company-namer">Training</h1>
                 <h1 className="company-namer">Portal</h1>
             </div>
             <div className="home-options">
