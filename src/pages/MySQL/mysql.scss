@@ -20,16 +20,18 @@
             display: flex;
             flex-direction: column;
             // background: yellow;
-            width: 100%;
+            width: 95%;
             justify-content: center;
-            text-indent: 20px;
+            // text-indent: 20px;
+            margin: 0 auto;
 
             .text {
+                // background: green;
                 color: $font-color1;
                 font-weight: 500;
                 font-size: 1.1em;
                 text-align: left;
-                line-height: 1.5em;    
+                line-height: 1.5em;
             }
         }
 

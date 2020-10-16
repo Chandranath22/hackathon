@@ -6,6 +6,17 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
+    position: relative;
+
+    .logout-button {
+        position: absolute;
+        color: white;
+        font-weight: 600;
+        font-size: 1.1em;
+        margin: 20px;
+        right: 0;
+        cursor: pointer;
+    }
 
     .header-section {
         // background: yellow;
@@ -14,7 +25,7 @@
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        height: 50%;
+        height: 20%;
         margin: auto 0;
 
         .company-namer {

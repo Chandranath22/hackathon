@@ -8,8 +8,7 @@ const Register = () => {
     const[email, setEmail] = useState(''); //user email id
     const[password, setPassword] = useState(''); //user password
     const[confirmPass, setConfirmPass] = useState('');
-    const[name, setName] = useState(''); 
-    const[phone, setPhone] = useState('');   // confirm password
+    const[name, setName] = useState('');
 
     const onFormSubmit = () => {
         if(confirmPass === password) {
@@ -25,7 +24,6 @@ const Register = () => {
         const data = {
             name,
             email,
-            phone,
             password
         }
         axios.post('http://localhost:9000/api/register', data).then(res => {
@@ -60,12 +58,6 @@ const Register = () => {
                             type={"email"}
                             placeholder="name@domain.com"
                             setValue={(e) => setEmail(e)}
-                        />
-                        <Input
-                            label="Phone Number"
-                            type={"number"}
-                            placeholder="Your phone number"
-                            setValue={(e) => setPhone(e)}
                         />
                         <Input 
                             label="Password"
